@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../Core/utils/constance/variables.dart';
 import '../../../../../Core/utils/widgets/build_book_item.dart';
-import '../../../../../Core/utils/widgets/numbers_list.dart';
 import '../../../controller/videos_cubit/video_cubit.dart';
+import 'numbers_list.dart';
 
 class CustomGridView extends StatelessWidget {
   const CustomGridView({Key? key, required this.cubit}) : super(key: key);
@@ -24,26 +24,36 @@ class CustomGridView extends StatelessWidget {
             crossAxisCount: 3,
             children: List.generate(
               cubit.categorySelected == 0
-                  ? AppVariable.booksItems0.length
+                  ? AppVariable.phonicsVideosNames.length
                   : cubit.categorySelected == 1
-                      ? AppVariable.booksItems1.length
+                      ? AppVariable.mathsVideosNames.length
                       : cubit.categorySelected == 2
-                          ? AppVariable.booksItems2.length
-                          : AppVariable.booksItems0.length,
+                          ? AppVariable.programmingVideosLinks.length
+                          : cubit.categorySelected == 3
+                              ? AppVariable.storiesVideosLinks.length
+                              : cubit.categorySelected == 4
+                                  ? AppVariable.scienceVideosLinks.length
+                                  : AppVariable.phonicsVideosNames.length,
               (index) => buildGridBooks(
                 cubit.categorySelected == 0
-                    ? AppVariable.booksItems0[index]
+                    ? AppVariable.phonicsVideosNames[index]
                     : cubit.categorySelected == 1
-                        ? AppVariable.booksItems1[index]
+                        ? AppVariable.mathsVideosNames[index]
                         : cubit.categorySelected == 2
-                            ? AppVariable.booksItems2[index]
-                            : AppVariable.booksItems0[index],
+                            ? AppVariable.mathsVideosLinks[index]
+                            : cubit.categorySelected == 3
+                                ? AppVariable.storiesVideosLinks[index]
+                                : cubit.categorySelected == 4
+                                    ? AppVariable.scienceVideosLinks[index]
+                                    : AppVariable.phonicsVideosNames[index],
                 cubit,
               ),
             ),
           ),
         ),
-        numList(),
+        NumberList(
+          cubit: cubit,
+        ),
       ],
     );
   }

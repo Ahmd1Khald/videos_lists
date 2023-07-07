@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../../../../Core/utils/constance/variables.dart';
+import '../../../../../Core/utils/functions/functions.dart';
 import '../../../controller/videos_cubit/video_cubit.dart';
 import '../videos_view.dart';
 
@@ -20,9 +22,33 @@ class BooksName extends StatelessWidget {
         child: TextButton(
           child: Text(cubit.bookName),
           onPressed: () {
+            int index = 0;
+            index = AppFunctions.getVideoLink(
+              bookName: cubit.bookName,
+              selectedCat: cubit.categorySelected,
+            );
+            print('index => $index');
             String? videoId;
-            videoId = YoutubePlayer.convertUrlToId(
-                "https://www.youtube.com/watch?v=kDMEx29RlE8");
+            if (index == 0) {
+              videoId = YoutubePlayer.convertUrlToId(
+                  AppVariable.phonicsVideosLinks[index]);
+            }
+            if (index == 1) {
+              videoId = YoutubePlayer.convertUrlToId(
+                  AppVariable.mathsVideosLinks[index]);
+            }
+            if (index == 2) {
+              videoId = YoutubePlayer.convertUrlToId(
+                  AppVariable.programmingVideosLinks[index]);
+            }
+            if (index == 3) {
+              videoId = YoutubePlayer.convertUrlToId(
+                  AppVariable.storiesVideosLinks[index]);
+            }
+            if (index == 4) {
+              videoId = YoutubePlayer.convertUrlToId(
+                  AppVariable.scienceVideosLinks[index]);
+            }
             print(videoId);
             Navigator.push(
               context,

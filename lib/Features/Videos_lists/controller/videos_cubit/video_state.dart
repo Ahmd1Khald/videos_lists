@@ -7,3 +7,5 @@ class VideoInitial extends VideoState {}
 class VideoChangeCategory extends VideoState {}
 
 class VideoChangeBookName extends VideoState {}
+
+class VideoChangeNumberSelected extends VideoState {}

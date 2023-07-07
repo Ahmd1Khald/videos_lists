@@ -20,4 +20,11 @@ class VideoCubit extends Cubit<VideoState> {
 
     emit(VideoChangeBookName());
   }
+
+  int numberSelected = 0;
+  void changeNumberSelected({required int index}) {
+    numberSelected = index;
+
+    emit(VideoChangeNumberSelected());
+  }
 }

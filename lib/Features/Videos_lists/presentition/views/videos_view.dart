@@ -12,7 +12,9 @@ class VideosView extends StatelessWidget {
     YoutubePlayerController _controller = YoutubePlayerController(
       initialVideoId: video,
       flags: const YoutubePlayerFlags(
-        autoPlay: false,
+        autoPlay: true,
+        enableCaption: true,
+        //captionLanguage: 'English',
         mute: false,
       ),
     );
@@ -20,8 +22,8 @@ class VideosView extends StatelessWidget {
       backgroundColor: AppColor.backgroundColor,
       body: Center(
         child: SizedBox(
-          width: 200.w,
-          height: 350.h,
+          width: 250.w,
+          height: 344.h,
           child: YoutubePlayer(
             controller: _controller,
             showVideoProgressIndicator: true,
