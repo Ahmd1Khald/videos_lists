@@ -99,14 +99,14 @@ class CustomGridView extends StatelessWidget {
                                                         cubit.numberSelected ==
                                                             1
                                                     ? AppVariable
-                                                            .storiesVideosLinks[
+                                                            .storiesVideosNames[
                                                         index + 9]
                                                     : cubit.categorySelected ==
                                                                 4 &&
                                                             cubit.numberSelected ==
                                                                 1
                                                         ? AppVariable
-                                                                .scienceVideosLinks[
+                                                                .scienceVideosNames[
                                                             index + 9]
                                                         : AppVariable
                                                             .phonicsVideosNames[index + 9],
