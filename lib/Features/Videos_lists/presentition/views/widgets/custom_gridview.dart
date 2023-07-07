@@ -13,6 +13,7 @@ class CustomGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
           width: 100.w,
@@ -23,29 +24,92 @@ class CustomGridView extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             crossAxisCount: 3,
             children: List.generate(
-              cubit.categorySelected == 0
+              cubit.categorySelected == 0 && cubit.numberSelected == 0
                   ? AppVariable.phonicsVideosNames.length
-                  : cubit.categorySelected == 1
+                  : cubit.categorySelected == 1 && cubit.numberSelected == 0
                       ? AppVariable.mathsVideosNames.length
-                      : cubit.categorySelected == 2
+                      : cubit.categorySelected == 2 && cubit.numberSelected == 0
                           ? AppVariable.programmingVideosLinks.length
-                          : cubit.categorySelected == 3
+                          : cubit.categorySelected == 3 &&
+                                  cubit.numberSelected == 0
                               ? AppVariable.storiesVideosLinks.length
-                              : cubit.categorySelected == 4
+                              : cubit.categorySelected == 4 &&
+                                      cubit.numberSelected == 0
                                   ? AppVariable.scienceVideosLinks.length
-                                  : AppVariable.phonicsVideosNames.length,
+                                  : cubit.categorySelected == 0 &&
+                                          cubit.numberSelected == 1
+                                      ? AppVariable.phonicsVideosNames.length -
+                                          9
+                                      : cubit.categorySelected == 1 &&
+                                              cubit.numberSelected == 1
+                                          ? AppVariable
+                                                  .mathsVideosNames.length -
+                                              9
+                                          : cubit.categorySelected == 2 &&
+                                                  cubit.numberSelected == 1
+                                              ? AppVariable
+                                                      .programmingVideosLinks
+                                                      .length -
+                                                  9
+                                              : cubit.categorySelected == 3 &&
+                                                      cubit.numberSelected == 1
+                                                  ? AppVariable
+                                                          .storiesVideosLinks
+                                                          .length -
+                                                      9
+                                                  : cubit.categorySelected ==
+                                                              4 &&
+                                                          cubit.numberSelected ==
+                                                              1
+                                                      ? AppVariable
+                                                              .scienceVideosLinks
+                                                              .length -
+                                                          9
+                                                      : AppVariable
+                                                          .phonicsVideosNames
+                                                          .length,
               (index) => buildGridBooks(
-                cubit.categorySelected == 0
+                cubit.categorySelected == 0 && cubit.numberSelected == 0
                     ? AppVariable.phonicsVideosNames[index]
-                    : cubit.categorySelected == 1
+                    : cubit.categorySelected == 1 && cubit.numberSelected == 0
                         ? AppVariable.mathsVideosNames[index]
-                        : cubit.categorySelected == 2
-                            ? AppVariable.mathsVideosLinks[index]
-                            : cubit.categorySelected == 3
-                                ? AppVariable.storiesVideosLinks[index]
-                                : cubit.categorySelected == 4
-                                    ? AppVariable.scienceVideosLinks[index]
-                                    : AppVariable.phonicsVideosNames[index],
+                        : cubit.categorySelected == 2 &&
+                                cubit.numberSelected == 0
+                            ? AppVariable.programmingVideosNames[index]
+                            : cubit.categorySelected == 3 &&
+                                    cubit.numberSelected == 0
+                                ? AppVariable.storiesVideosNames[index]
+                                : cubit.categorySelected == 4 &&
+                                        cubit.numberSelected == 0
+                                    ? AppVariable.scienceVideosNames[index]
+                                    : cubit.categorySelected == 0 &&
+                                            cubit.numberSelected == 1
+                                        ? AppVariable
+                                            .phonicsVideosNames[index + 9]
+                                        : cubit.categorySelected == 1 &&
+                                                cubit.numberSelected == 1
+                                            ? AppVariable
+                                                .mathsVideosNames[index + 9]
+                                            : cubit.categorySelected == 2 &&
+                                                    cubit.numberSelected == 1
+                                                ? AppVariable
+                                                        .programmingVideosNames[
+                                                    index + 9]
+                                                : cubit.categorySelected == 3 &&
+                                                        cubit.numberSelected ==
+                                                            1
+                                                    ? AppVariable
+                                                            .storiesVideosLinks[
+                                                        index + 9]
+                                                    : cubit.categorySelected ==
+                                                                4 &&
+                                                            cubit.numberSelected ==
+                                                                1
+                                                        ? AppVariable
+                                                                .scienceVideosLinks[
+                                                            index + 9]
+                                                        : AppVariable
+                                                            .phonicsVideosNames[index + 9],
                 cubit,
               ),
             ),

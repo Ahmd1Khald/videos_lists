@@ -14,9 +14,9 @@ class NumberList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SizedBox(
-        width: 130.w,
-        height: 30.h,
-        child: ListView.separated(
+        width: 55.w,
+        height: 20.h,
+        child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => TextButton(
             onPressed: () {
@@ -27,8 +27,7 @@ class NumberList extends StatelessWidget {
               style: AppStyles.categoriesStyle,
             ),
           ),
-          separatorBuilder: (context, index) => const SizedBox(width: 1),
-          itemCount: AppVariable.categoriesCount.length,
+          itemCount: 2,
         ),
       ),
     );

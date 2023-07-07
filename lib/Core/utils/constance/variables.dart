@@ -2,9 +2,6 @@ class AppVariable {
   static List categoriesCount = [
     '1',
     '2',
-    '3',
-    '4',
-    '5',
   ];
   static List categoriesItems = [
     'Phonics',

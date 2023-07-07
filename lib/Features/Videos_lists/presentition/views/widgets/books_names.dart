@@ -22,30 +22,31 @@ class BooksName extends StatelessWidget {
         child: TextButton(
           child: Text(cubit.bookName),
           onPressed: () {
-            int index = 0;
+            int index;
+            print(cubit.categorySelected);
             index = AppFunctions.getVideoLink(
               bookName: cubit.bookName,
               selectedCat: cubit.categorySelected,
             );
-            print('index => $index');
+            print('video index => $index');
             String? videoId;
-            if (index == 0) {
+            if (cubit.categorySelected == 0) {
               videoId = YoutubePlayer.convertUrlToId(
                   AppVariable.phonicsVideosLinks[index]);
             }
-            if (index == 1) {
+            if (cubit.categorySelected == 1) {
               videoId = YoutubePlayer.convertUrlToId(
                   AppVariable.mathsVideosLinks[index]);
             }
-            if (index == 2) {
+            if (cubit.categorySelected == 2) {
               videoId = YoutubePlayer.convertUrlToId(
                   AppVariable.programmingVideosLinks[index]);
             }
-            if (index == 3) {
+            if (cubit.categorySelected == 3) {
               videoId = YoutubePlayer.convertUrlToId(
                   AppVariable.storiesVideosLinks[index]);
             }
-            if (index == 4) {
+            if (cubit.categorySelected == 4) {
               videoId = YoutubePlayer.convertUrlToId(
                   AppVariable.scienceVideosLinks[index]);
             }

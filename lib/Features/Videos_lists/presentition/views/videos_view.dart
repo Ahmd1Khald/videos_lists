@@ -22,8 +22,8 @@ class VideosView extends StatelessWidget {
       backgroundColor: AppColor.backgroundColor,
       body: Center(
         child: SizedBox(
-          width: 250.w,
-          height: 344.h,
+          width: 220.w,
+          height: 350.h,
           child: YoutubePlayer(
             controller: _controller,
             showVideoProgressIndicator: true,

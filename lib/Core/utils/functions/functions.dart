@@ -10,29 +10,26 @@ class AppFunctions {
           index = i;
         }
       }
-    }
-    if (selectedCat == 1) {
+    } else if (selectedCat == 1) {
       for (int i = 0; i < AppVariable.mathsVideosNames.length; i++) {
         if (AppVariable.mathsVideosNames[i] == bookName) {
           index = i;
         }
       }
-    }
-    if (selectedCat == 2) {
+    } else if (selectedCat == 2) {
       for (int i = 0; i < AppVariable.programmingVideosNames.length; i++) {
         if (AppVariable.programmingVideosNames[i] == bookName) {
           index = i;
+          print('2222222222222222222--$index');
         }
       }
-    }
-    if (selectedCat == 3) {
+    } else if (selectedCat == 3) {
       for (int i = 0; i < AppVariable.storiesVideosNames.length; i++) {
         if (AppVariable.storiesVideosNames[i] == bookName) {
           index = i;
         }
       }
-    }
-    if (selectedCat == 4) {
+    } else if (selectedCat == 4) {
       for (int i = 0; i < AppVariable.scienceVideosNames.length; i++) {
         if (AppVariable.scienceVideosNames[i] == bookName) {
           index = i;
