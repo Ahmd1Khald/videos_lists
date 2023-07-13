@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../Core/utils/constance/variables.dart';
 import '../../../../../Core/utils/widgets/build_book_item.dart';
-import '../../../controller/videos_cubit/video_cubit.dart';
+import '../../controller/videos_cubit/video_cubit.dart';
 import 'numbers_list.dart';
 
 class CustomGridView extends StatelessWidget {

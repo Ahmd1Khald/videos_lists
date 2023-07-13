@@ -14,7 +14,8 @@ class VideosView extends StatelessWidget {
       flags: const YoutubePlayerFlags(
         autoPlay: true,
         enableCaption: true,
-        //captionLanguage: 'English',
+        //captionLanguage: 'en',
+        disableDragSeek: true,
         mute: false,
       ),
     );
@@ -30,9 +31,9 @@ class VideosView extends StatelessWidget {
             width: 400.w,
             progressIndicatorColor: Colors.white,
             onReady: () {
-              _controller.addListener(
-                () => video,
-              );
+              // _controller.addListener(
+              //   () => video,
+              // );
             },
           ),
         ),

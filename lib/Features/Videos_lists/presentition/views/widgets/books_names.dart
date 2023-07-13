@@ -4,7 +4,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../../../Core/utils/constance/variables.dart';
 import '../../../../../Core/utils/functions/functions.dart';
-import '../../../controller/videos_cubit/video_cubit.dart';
+import '../../controller/videos_cubit/video_cubit.dart';
 import '../videos_view.dart';
 
 class BooksName extends StatelessWidget {

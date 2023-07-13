@@ -38,6 +38,10 @@ dependencies:
   # cubit
   bloc:
   flutter_bloc:
+  # clean
+  equatable:
+  dartz: ^0.10.1
+
   # responsive
   flutter_screenutil: ^5.8.4
   #video player

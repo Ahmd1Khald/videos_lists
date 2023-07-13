@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:videos_lists/Features/Videos_lists/controller/videos_cubit/video_cubit.dart';
 
 import '../../../../../Core/utils/constance/styles.dart';
 import '../../../../../Core/utils/constance/variables.dart';
+import '../../controller/videos_cubit/video_cubit.dart';
 
 class BooksCategories extends StatelessWidget {
   const BooksCategories({Key? key, required this.cubit}) : super(key: key);
