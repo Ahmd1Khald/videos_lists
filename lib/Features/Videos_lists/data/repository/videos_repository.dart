@@ -12,10 +12,13 @@ class VideosRepository extends BaseVideosRepository {
 
   @override
   Future<Either<Failure, List<TopicsEntity>>> getListTopics() async {
+    final result = await baseVideosRemoteDataSource.getTopicsList();
+    //print(result);
     try {
-      var result = await baseVideosRemoteDataSource.getTopicsList();
       return Right(result);
     } on ServerException catch (failure) {
+      print('failure  +++++++++++++++++++');
+      print(failure);
       return Left(ServerFailure(failure.errorMessage));
     }
   }

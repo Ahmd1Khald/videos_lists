@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:videos_lists/Core/helpers/dio_helper.dart';
+import 'package:videos_lists/test.dart';
 
-import 'Features/Videos_lists/presentation/views/videos_lists.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  //WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   runApp(const MyApp());
 }
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const VideosLists(),
+          home: const Test(),
         );
       },
     );

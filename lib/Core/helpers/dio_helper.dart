@@ -14,24 +14,24 @@ class DioHelper {
 
   static Future<Response> postData({
     required String endPoint,
-    String? token,
+    required String token,
     Map<String, dynamic>? data,
     Map<String, dynamic>? query,
   }) async {
-    final options = Options(headers: {'Authorization': ApiConstant.token});
+    final options = Options(headers: {'Authorization': token});
     return await dio.post(endPoint,
         data: data, queryParameters: query, options: options);
   }
 
   static Future<Response> getData({
     required String endPoint,
-    String? token,
+    required String token,
     Map<String, dynamic>? data,
     Map<String, dynamic>? query,
   }) async {
-    final options = Options(headers: {'Authorization': ApiConstant.token});
+    final options = Options(headers: {'Authorization': token});
     return await dio.get(
-      endPoint,
+      '${ApiConstant.baseUrl}$endPoint',
       data: data,
       queryParameters: query,
       options: options,

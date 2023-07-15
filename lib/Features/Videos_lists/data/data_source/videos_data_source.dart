@@ -11,12 +11,17 @@ abstract class BaseVideosRemoteDataSource {
 class VideosRemoteDataSource extends BaseVideosRemoteDataSource {
   @override
   Future<List<TopicsModel>> getTopicsList() async {
-    final response =
-        await DioHelper.getData(endPoint: ApiConstant.getTopicsListEndPoint);
+    final response = await DioHelper.getData(
+      endPoint: ApiConstant.getTopicsListEndPoint,
+      token: ApiConstant.token,
+      query: {ApiConstant.pagination: '1'},
+    );
     if (response.statusCode == 200) {
-      return List<TopicsModel>.from(
-          (response.data as List).map((e) => TopicsModel.fromJson(e)));
+      //print(response.data);
+      final jsonData = response.data as List<dynamic>;
+      return jsonData.map((e) => TopicsModel.fromJson(e)).toList();
     } else {
+      print('error +++++++++++++++++++');
       throw const ServerException(errorMessage: 'Error while get topics list');
     }
   }

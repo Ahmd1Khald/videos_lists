@@ -5,7 +5,7 @@ import '../../../../Core/error/failure.dart';
 import '../repository/base_videos_repository.dart';
 
 class GetListTopicsUseCase {
-  BaseVideosRepository baseVideosRepository;
+  final BaseVideosRepository baseVideosRepository;
 
   GetListTopicsUseCase(this.baseVideosRepository);
 
