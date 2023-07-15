@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-class Topics extends Equatable {
+class TopicsEntity extends Equatable {
   final int itemCount;
   final int id;
   final String title;
   final String mediaPath;
 
-  const Topics({
+  const TopicsEntity({
     required this.id,
     required this.title,
     required this.itemCount,

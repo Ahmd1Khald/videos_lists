@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:videos_lists/Core/utils/constance/color.dart';
-import 'package:videos_lists/Features/Videos_lists/presentition/views/widgets/books_categories.dart';
-import 'package:videos_lists/Features/Videos_lists/presentition/views/widgets/books_names.dart';
-import 'package:videos_lists/Features/Videos_lists/presentition/views/widgets/custom_gridview.dart';
+import 'package:videos_lists/Features/Videos_lists/presentation/views/widgets/books_categories.dart';
+import 'package:videos_lists/Features/Videos_lists/presentation/views/widgets/books_names.dart';
+import 'package:videos_lists/Features/Videos_lists/presentation/views/widgets/custom_gridview.dart';
 
 import '../controller/videos_cubit/video_cubit.dart';
 

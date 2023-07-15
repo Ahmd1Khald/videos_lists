@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../Core/error/failure.dart';
-import '../entites/topics.dart';
+import '../entites/topics_entity.dart';
 
 abstract class BaseVideosRepository {
-  Future<Either<Failure, List<Topics>>> getListTopics();
+  Future<Either<Failure, List<TopicsEntity>>> getListTopics();
 }
