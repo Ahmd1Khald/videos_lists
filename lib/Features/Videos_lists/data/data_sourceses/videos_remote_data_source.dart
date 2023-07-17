@@ -3,16 +3,17 @@ import 'package:videos_lists/Core/utils/constance/const_api.dart';
 import 'package:videos_lists/Core/utils/constance/variables.dart';
 import 'package:videos_lists/Core/utils/functions/functions.dart';
 import 'package:videos_lists/Features/Videos_lists/data/model/topics_model.dart';
+import 'package:videos_lists/Features/Videos_lists/domain/entites/topics_entity.dart';
 
 import '../../../../Core/error/exceptions.dart';
 
 abstract class BaseVideosRemoteDataSource {
-  Future<List<TopicsModel>> getTopicsList();
+  Future<List<TopicsEntity>> getTopicsList();
 }
 
 class VideosRemoteDataSource extends BaseVideosRemoteDataSource {
   @override
-  Future<List<TopicsModel>> getTopicsList() async {
+  Future<List<TopicsEntity>> getTopicsList() async {
     final response = await DioHelper.getData(
       endPoint: ApiConstant.getTopicsListEndPoint,
       token: ApiConstant.token,
@@ -21,7 +22,7 @@ class VideosRemoteDataSource extends BaseVideosRemoteDataSource {
     if (response.statusCode == 200) {
       //print(response.data);
       final jsonData = response.data as List<dynamic>;
-      List<TopicsModel> topics =
+      List<TopicsEntity> topics =
           jsonData.map((e) => TopicsModel.fromJson(e)).toList();
 
       AppFunctions.saveData(
