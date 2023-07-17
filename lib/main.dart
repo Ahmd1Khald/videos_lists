@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:videos_lists/Core/helpers/dio_helper.dart';
 import 'package:videos_lists/Core/utils/constance/variables.dart';
 import 'package:videos_lists/test.dart';
@@ -8,8 +8,9 @@ import 'package:videos_lists/test.dart';
 import 'Features/Videos_lists/domain/entites/topics_entity.dart';
 
 void main() async {
-  //WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
+  await Hive.initFlutter();
   Hive.registerAdapter(TopicsEntityAdapter());
   await Hive.openBox(AppVariable.kTopicsBox);
   runApp(const MyApp());
