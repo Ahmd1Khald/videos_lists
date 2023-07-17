@@ -1,13 +1,17 @@
-import '../network/error_message_model.dart';
-
 class ServerException implements Exception {
+  //final ErrorMessageModel errorMessageModel;
   final String errorMessage;
 
-  const ServerException({required this.errorMessage});
+  const ServerException({
+    //required this.errorMessageModel,
+    required this.errorMessage,
+  });
 }
 
-class LocalException implements Exception {
-  final ErrorMessageModel errorMessageModel;
+class LocalDatabaseException implements Exception {
+  final String message;
 
-  const LocalException({required this.errorMessageModel});
+  const LocalDatabaseException({
+    required this.message,
+  });
 }
