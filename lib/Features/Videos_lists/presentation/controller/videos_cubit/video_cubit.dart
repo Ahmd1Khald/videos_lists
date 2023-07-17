@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:videos_lists/Features/Videos_lists/domain/entites/topics_entity.dart';
+import 'package:videos_lists/Features/Videos_lists/domain/usecase/get_list_topics_usecase.dart';
 
 part 'video_state.dart';
 
 class VideoCubit extends Cubit<VideoState> {
-  VideoCubit() : super(VideoInitial());
+  VideoCubit(this.getListTopicsUseCase) : super(VideoInitial());
 
   static VideoCubit get(context) => BlocProvider.of(context);
 
@@ -26,5 +28,16 @@ class VideoCubit extends Cubit<VideoState> {
     numberSelected = index;
 
     emit(VideoChangeNumberSelected());
+  }
+
+  final GetListTopicsUseCase getListTopicsUseCase;
+  Future<void> fetchTopicsList() async {
+    emit(VideoLoadingFetchTopicsList());
+    var result = await getListTopicsUseCase.execute();
+    result.fold((failure) {
+      emit(VideoErrorFetchTopicsList(failure.message));
+    }, (topics) {
+      emit(VideoSuccessFetchTopicsList(topics));
+    });
   }
 }
