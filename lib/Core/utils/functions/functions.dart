@@ -1,3 +1,5 @@
+import 'package:hive/hive.dart';
+
 import '../constance/variables.dart';
 
 class AppFunctions {
@@ -37,5 +39,13 @@ class AppFunctions {
       }
     }
     return index;
+  }
+
+  static void saveData({
+    required data,
+    required String boxName,
+  }) {
+    var box = Hive.box(boxName);
+    box.addAll(data);
   }
 }

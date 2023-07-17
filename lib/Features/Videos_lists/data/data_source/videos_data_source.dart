@@ -1,5 +1,7 @@
 import 'package:videos_lists/Core/helpers/dio_helper.dart';
 import 'package:videos_lists/Core/utils/constance/const_api.dart';
+import 'package:videos_lists/Core/utils/constance/variables.dart';
+import 'package:videos_lists/Core/utils/functions/functions.dart';
 import 'package:videos_lists/Features/Videos_lists/data/model/topics_model.dart';
 
 import '../../../../Core/error/exceptions.dart';
@@ -19,7 +21,15 @@ class VideosRemoteDataSource extends BaseVideosRemoteDataSource {
     if (response.statusCode == 200) {
       //print(response.data);
       final jsonData = response.data as List<dynamic>;
-      return jsonData.map((e) => TopicsModel.fromJson(e)).toList();
+      List<TopicsModel> topics =
+          jsonData.map((e) => TopicsModel.fromJson(e)).toList();
+
+      AppFunctions.saveData(
+        data: topics,
+        boxName: AppVariable.kTopicsBox,
+      );
+
+      return topics;
     } else {
       print('error +++++++++++++++++++');
       throw const ServerException(errorMessage: 'Error while get topics list');
