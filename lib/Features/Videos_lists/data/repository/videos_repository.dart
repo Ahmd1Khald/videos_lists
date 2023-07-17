@@ -17,7 +17,7 @@ class VideosRepository extends BaseVideosRepository {
   });
 
   @override
-  Future<Either<Failure, List<TopicsEntity>>> getListTopics() async {
+  Future<Either<Failure, List<TopicsEntity>>> fetchListTopics() async {
     try {
       final localResult = await baseVideosLocalDataSource.getTopicsList();
       if (localResult.isNotEmpty) {

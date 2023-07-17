@@ -1,15 +1,17 @@
 import 'package:dartz/dartz.dart';
-import 'package:videos_lists/Features/Videos_lists/domain/entites/topics_entity.dart';
 
 import '../../../../Core/error/failure.dart';
+import '../../../../Core/use_cases.dart';
+import '../entites/topics_entity.dart';
 import '../repository/base_videos_repository.dart';
 
-class GetListTopicsUseCase {
+class GetListTopicsUseCase extends UseCase<List<TopicsEntity>, NoParam> {
   final BaseVideosRepository baseVideosRepository;
 
   GetListTopicsUseCase(this.baseVideosRepository);
 
-  Future<Either<Failure, List<TopicsEntity>>> execute() async {
-    return await baseVideosRepository.getListTopics();
+  @override
+  Future<Either<Failure, List<TopicsEntity>>> execute([NoParam? param]) async {
+    return await baseVideosRepository.fetchListTopics();
   }
 }
