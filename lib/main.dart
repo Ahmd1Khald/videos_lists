@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
 import 'package:videos_lists/Core/helpers/dio_helper.dart';
+import 'package:videos_lists/Core/utils/constance/variables.dart';
 import 'package:videos_lists/test.dart';
 
-void main() {
+import 'Features/Videos_lists/domain/entites/topics_entity.dart';
+
+void main() async {
   //WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
+  Hive.registerAdapter(TopicsEntityAdapter());
+  await Hive.openBox(AppVariable.kTopicsBox);
   runApp(const MyApp());
 }
 

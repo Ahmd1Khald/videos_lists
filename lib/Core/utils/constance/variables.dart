@@ -1,4 +1,6 @@
 class AppVariable {
+  static const kTopicsBox = 'kTopicsBox';
+
   static List categoriesCount = [
     '1',
     '2',
