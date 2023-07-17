@@ -12,7 +12,7 @@ void main() async {
   DioHelper.init();
   await Hive.initFlutter();
   Hive.registerAdapter(TopicsEntityAdapter());
-  await Hive.openBox(AppVariable.kTopicsBox);
+  await Hive.openBox<TopicsEntity>(AppVariable.kTopicsBox);
   runApp(const MyApp());
 }
 
