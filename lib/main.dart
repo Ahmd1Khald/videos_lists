@@ -5,12 +5,12 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:videos_lists/Core/helpers/dio_helper.dart';
 import 'package:videos_lists/Core/utils/constance/variables.dart';
 import 'package:videos_lists/Features/Videos_lists/domain/entites/items/items_entity.dart';
+import 'package:videos_lists/test.dart';
 
 import 'Core/BlocObserver.dart';
 import 'Core/service locator/ServiceLocator.dart';
 import 'Features/Videos_lists/domain/entites/topics/topics_entity.dart';
 import 'Features/Videos_lists/domain/entites/topics/topics_entity.g.dart';
-import 'Features/Videos_lists/presentation/views/videos_lists.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,7 @@ void main() async {
   Hive.registerAdapter(TopicsEntityAdapter());
   Hive.registerAdapter(ItemsEntityAdapter());
   await Hive.openBox<TopicsEntity>(kTopicsBox);
-  await Hive.openBox<TopicsEntity>(kItemsBox);
+  await Hive.openBox<ItemsEntity>(kItemsBox);
   setUpServiceLocator();
   runApp(const MyApp());
 }
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const VideosLists(),
+          home: const Test(),
         );
       },
     );
