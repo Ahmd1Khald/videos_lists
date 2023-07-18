@@ -1,18 +1,24 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:videos_lists/Core/helpers/dio_helper.dart';
 import 'package:videos_lists/Core/utils/constance/variables.dart';
-import 'package:videos_lists/test.dart';
 
-import 'Features/Videos_lists/domain/entites/topics_entity.dart';
+import 'Core/BlocObserver.dart';
+import 'Core/service locator/ServiceLocator.dart';
+import 'Features/Videos_lists/domain/entites/topics/topics_entity.dart';
+import 'Features/Videos_lists/domain/entites/topics/topics_entity.g.dart';
+import 'Features/Videos_lists/presentation/views/videos_lists.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await Hive.initFlutter();
   Hive.registerAdapter(TopicsEntityAdapter());
-  await Hive.openBox<TopicsEntity>(AppVariable.kTopicsBox);
+  await Hive.openBox<TopicsEntity>(kTopicsBox);
+  setUpServiceLocator();
   runApp(const MyApp());
 }
 
@@ -35,7 +41,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const Test(),
+          home: const VideosLists(),
         );
       },
     );

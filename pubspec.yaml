@@ -46,6 +46,8 @@ dependencies:
   #hive
   hive:
   hive_flutter:
+  #service locator
+  get_it:
 
 
   # responsive

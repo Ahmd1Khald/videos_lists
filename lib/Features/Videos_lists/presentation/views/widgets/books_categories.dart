@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../Core/utils/constance/styles.dart';
-import '../../../../../Core/utils/constance/variables.dart';
 import '../../controller/videos_cubit/video_cubit.dart';
 
 class BooksCategories extends StatelessWidget {
@@ -33,11 +32,11 @@ class BooksCategories extends StatelessWidget {
                   cubit.changeCategory(index: index);
                 },
                 child: Text(
-                  AppVariable.categoriesItems[index],
+                  cubit.topicsData?[index].title ?? '',
                   style: AppStyles.categoriesStyle,
                 ),
               ),
-              itemCount: AppVariable.categoriesItems.length,
+              itemCount: cubit.topicsData?.length ?? 0,
             ),
           ),
         ),

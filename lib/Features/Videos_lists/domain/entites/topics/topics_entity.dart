@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
-part 'topics_entity.g.dart';
-
 @HiveType(typeId: 0)
 class TopicsEntity extends Equatable {
   @HiveField(0)

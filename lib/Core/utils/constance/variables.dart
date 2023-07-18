@@ -1,6 +1,4 @@
 class AppVariable {
-  static const kTopicsBox = 'kTopicsBox';
-
   static List categoriesCount = [
     '1',
     '2',
@@ -160,3 +158,5 @@ class AppVariable {
 
   static String? bookName;
 }
+
+const kTopicsBox = 'kTopicsBox';

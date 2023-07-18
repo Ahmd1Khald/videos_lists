@@ -1,11 +1,11 @@
 import 'package:videos_lists/Core/helpers/dio_helper.dart';
 import 'package:videos_lists/Core/utils/constance/const_api.dart';
-import 'package:videos_lists/Core/utils/constance/variables.dart';
-import 'package:videos_lists/Core/utils/functions/functions.dart';
 import 'package:videos_lists/Features/Videos_lists/data/model/topics_model.dart';
-import 'package:videos_lists/Features/Videos_lists/domain/entites/topics_entity.dart';
+import 'package:videos_lists/Features/Videos_lists/domain/entites/topics/topics_entity.dart';
 
 import '../../../../Core/error/exceptions.dart';
+import '../../../../Core/utils/constance/variables.dart';
+import '../../../../Core/utils/functions/functions.dart';
 
 abstract class BaseVideosRemoteDataSource {
   Future<List<TopicsEntity>> getTopicsList();
@@ -25,10 +25,7 @@ class VideosRemoteDataSource extends BaseVideosRemoteDataSource {
       List<TopicsEntity> topics =
           jsonData.map((e) => TopicsModel.fromJson(e)).toList();
 
-      AppFunctions.saveData(
-        data: topics,
-        boxName: AppVariable.kTopicsBox,
-      );
+      await saveData(data: topics, boxName: kTopicsBox);
 
       return topics;
     } else {

@@ -9,7 +9,7 @@ class VideosView extends StatelessWidget {
   final String video;
   @override
   Widget build(BuildContext context) {
-    YoutubePlayerController _controller = YoutubePlayerController(
+    YoutubePlayerController controller = YoutubePlayerController(
       initialVideoId: video,
       flags: const YoutubePlayerFlags(
         autoPlay: true,
@@ -26,7 +26,7 @@ class VideosView extends StatelessWidget {
           width: 220.w,
           height: 350.h,
           child: YoutubePlayer(
-            controller: _controller,
+            controller: controller,
             showVideoProgressIndicator: true,
             width: 400.w,
             progressIndicatorColor: Colors.white,

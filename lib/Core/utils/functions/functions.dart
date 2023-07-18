@@ -40,12 +40,23 @@ class AppFunctions {
     }
     return index;
   }
+}
 
-  static void saveData({
-    required data,
-    required String boxName,
-  }) {
-    var box = Hive.box(boxName);
-    box.addAll(data);
+Future<void> saveData<T>(
+    {required List<T> data, required String boxName}) async {
+  try {
+    // Open the Hive box for writing
+    var box = await Hive.openBox<T>(boxName);
+
+    // Clear the box to remove any existing data (optional)
+    // box.clear();
+
+    // Save the data to the box
+    await box.addAll(data);
+
+    // Close the box after the operation is complete
+    await box.close();
+  } catch (e) {
+    print('Error while saving data to Hive: $e');
   }
 }

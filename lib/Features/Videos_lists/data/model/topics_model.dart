@@ -1,4 +1,4 @@
-import 'package:videos_lists/Features/Videos_lists/domain/entites/topics_entity.dart';
+import 'package:videos_lists/Features/Videos_lists/domain/entites/topics/topics_entity.dart';
 
 class TopicsModel extends TopicsEntity {
   const TopicsModel({

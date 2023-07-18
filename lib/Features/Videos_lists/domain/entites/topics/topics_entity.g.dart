@@ -1,10 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'topics_entity.dart';
-
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
+import 'package:hive/hive.dart';
+import 'package:videos_lists/Features/Videos_lists/domain/entites/topics/topics_entity.dart';
 
 class TopicsEntityAdapter extends TypeAdapter<TopicsEntity> {
   @override
