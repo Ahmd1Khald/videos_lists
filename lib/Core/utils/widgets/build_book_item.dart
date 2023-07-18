@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../Features/Videos_lists/presentation/controller/videos_cubit/video_cubit.dart';
 
-Widget buildGridBooks(String item, VideoCubit cubit) => Padding(
+Widget buildGridBooks(String name, VideoCubit cubit, int index) => Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        child: Container(
-          color: Colors.amberAccent,
-        ),
+        child: Image.asset('assets/images/books.png'),
         onTap: () {
-          cubit.changeBookName(name: item);
-          print(cubit.bookName);
+          cubit.changeBookName(name: name);
+          cubit.changeVideoSelected(index: index);
+          print(name);
         },
       ),
     );

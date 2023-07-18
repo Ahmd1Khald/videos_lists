@@ -1,21 +1,23 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:videos_lists/Features/Videos_lists/domain/usecase/get_list_topics_usecase.dart';
 
+import '../../../domain/entites/items/items_entity.dart';
 import '../../../domain/entites/topics/topics_entity.dart';
+import '../../../domain/usecase/get_list_items_usecase.dart';
 
 part 'video_state.dart';
 
 class VideoCubit extends Cubit<VideoState> {
-  VideoCubit(this.getListTopicsUseCase) : super(VideoInitial());
+  VideoCubit(this.getListTopicsUseCase, this.getListItemsUseCase)
+      : super(VideoInitial());
 
   static VideoCubit get(context) => BlocProvider.of(context);
 
-  int categorySelected = 0;
+  int videoSelected = 0;
 
-  void changeCategory({required int index}) {
-    categorySelected = index;
-
-    emit(VideoChangeCategory());
+  void changeVideoSelected({required int index}) {
+    videoSelected = index;
+    emit(VideoChangeVideoSelected());
   }
 
   String bookName = 'Book Name';
@@ -45,6 +47,21 @@ class VideoCubit extends Cubit<VideoState> {
     }, (topics) {
       topicsData = topics;
       emit(VideoSuccessFetchTopicsList(topics));
+    });
+  }
+
+  List<ItemsEntity>? itemsData;
+  final GetListItemsUseCase getListItemsUseCase;
+
+  Future<void> fetchItemsList({required int id}) async {
+    emit(VideoLoadingFetchItemsList());
+    itemsData = [];
+    var result = await getListItemsUseCase.execute(id);
+    result.fold((failure) {
+      emit(VideoErrorFetchItemsList(failure.message));
+    }, (items) {
+      itemsData = items;
+      emit(VideoSuccessFetchItemsList(items));
     });
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:videos_lists/Features/Videos_lists/domain/repository/base_videos_repository.dart';
 
-import 'Features/Videos_lists/data/data_sourceses/videos_local_data_source.dart';
-import 'Features/Videos_lists/data/data_sourceses/videos_remote_data_source.dart';
+import 'Features/Videos_lists/data/data_sources/videos_local_data_source.dart';
+import 'Features/Videos_lists/data/data_sources/videos_remote_data_source.dart';
 import 'Features/Videos_lists/data/repository/videos_repository.dart';
 import 'Features/Videos_lists/domain/usecase/get_list_items_usecase.dart';
 

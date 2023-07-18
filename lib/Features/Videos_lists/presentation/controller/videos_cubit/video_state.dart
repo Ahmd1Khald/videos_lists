@@ -4,7 +4,7 @@ abstract class VideoState {}
 
 class VideoInitial extends VideoState {}
 
-class VideoChangeCategory extends VideoState {}
+class VideoChangeVideoSelected extends VideoState {}
 
 class VideoChangeBookName extends VideoState {}
 
@@ -20,4 +20,16 @@ class VideoSuccessFetchTopicsList extends VideoState {
 class VideoErrorFetchTopicsList extends VideoState {
   final String error;
   VideoErrorFetchTopicsList(this.error);
+}
+
+class VideoLoadingFetchItemsList extends VideoState {}
+
+class VideoSuccessFetchItemsList extends VideoState {
+  final List<ItemsEntity> items;
+  VideoSuccessFetchItemsList(this.items);
+}
+
+class VideoErrorFetchItemsList extends VideoState {
+  final String error;
+  VideoErrorFetchItemsList(this.error);
 }

@@ -12,6 +12,7 @@ class NumberList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int num = 0;
     return Expanded(
       child: SizedBox(
         width: 55.w,
@@ -20,6 +21,7 @@ class NumberList extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => TextButton(
             onPressed: () {
+              num = index;
               cubit.changeNumberSelected(index: index);
             },
             child: Text(
@@ -27,7 +29,7 @@ class NumberList extends StatelessWidget {
               style: AppStyles.categoriesStyle,
             ),
           ),
-          itemCount: 2,
+          itemCount: cubit.topicsData?[num].itemCount ?? 0,
         ),
       ),
     );

@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:videos_lists/Features/Videos_lists/domain/entites/items/items_entity.dart';
 
 import '../constance/variables.dart';
 
@@ -22,7 +24,6 @@ class AppFunctions {
       for (int i = 0; i < AppVariable.programmingVideosNames.length; i++) {
         if (AppVariable.programmingVideosNames[i] == bookName) {
           index = i;
-          print('2222222222222222222--$index');
         }
       }
     } else if (selectedCat == 3) {
@@ -40,6 +41,16 @@ class AppFunctions {
     }
     return index;
   }
+
+  static loadingPage({required context}) => showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => Center(
+          child: circleLoading(color: Colors.white),
+        ),
+      );
+
+  static circleLoading({required color}) {}
 }
 
 Future<void> saveData<T>(
@@ -59,4 +70,26 @@ Future<void> saveData<T>(
   } catch (e) {
     print('Error while saving data to Hive: $e');
   }
+}
+
+void updateValuesAndClearBox(
+    {required List<ItemsEntity> newData, required String boxName}) async {
+  final box = await Hive.openBox<ItemsEntity>(boxName);
+
+  // Retrieve and update the data
+  const int dataIndexToUpdate = 1; // Replace with the index you want to update
+  if (box.containsKey(dataIndexToUpdate)) {
+    final ItemsEntity? data = box.get(dataIndexToUpdate);
+    // data?.title = '';
+    // data?.id = 40;
+    // data?.mediaPath = '';
+    // data?.videoUrl = '';
+    box.put(dataIndexToUpdate, data!); // Update the data in the box
+  }
+
+  // Clear the box
+  await box.clear();
+
+  // Close the box when done
+  await box.close();
 }

@@ -29,7 +29,9 @@ class BooksCategories extends StatelessWidget {
             child: ListView.builder(
               itemBuilder: (context, index) => TextButton(
                 onPressed: () {
-                  cubit.changeCategory(index: index);
+                  int id = index + 1;
+                  print(id);
+                  cubit.fetchItemsList(id: id);
                 },
                 child: Text(
                   cubit.topicsData?[index].title ?? '',
