@@ -160,3 +160,4 @@ class AppVariable {
 }
 
 const kTopicsBox = 'kTopicsBox';
+const kItemsBox = 'kItemsBox';

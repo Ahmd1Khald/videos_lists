@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:videos_lists/Core/helpers/dio_helper.dart';
 import 'package:videos_lists/Core/utils/constance/variables.dart';
+import 'package:videos_lists/Features/Videos_lists/domain/entites/items/items_entity.dart';
 
 import 'Core/BlocObserver.dart';
 import 'Core/service locator/ServiceLocator.dart';
@@ -17,7 +18,9 @@ void main() async {
   DioHelper.init();
   await Hive.initFlutter();
   Hive.registerAdapter(TopicsEntityAdapter());
+  Hive.registerAdapter(ItemsEntityAdapter());
   await Hive.openBox<TopicsEntity>(kTopicsBox);
+  await Hive.openBox<TopicsEntity>(kItemsBox);
   setUpServiceLocator();
   runApp(const MyApp());
 }
