@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:videos_lists/Core/error/exceptions.dart';
 import 'package:videos_lists/Core/error/failure.dart';
+import 'package:videos_lists/Features/Videos_lists/domain/entites/items/items_entity.dart';
 import 'package:videos_lists/Features/Videos_lists/domain/entites/topics/topics_entity.dart';
 import 'package:videos_lists/Features/Videos_lists/domain/repository/base_videos_repository.dart';
 
@@ -24,6 +25,24 @@ class VideosRepository extends BaseVideosRepository {
         return Right(localResult);
       }
       final result = await baseVideosRemoteDataSource.getTopicsList();
+      //print(result);
+      return Right(result);
+    } on ServerException catch (failure) {
+      print('failure  +++++++++++++++++++');
+      print(failure);
+      return Left(ServerFailure(failure.errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ItemsEntity>>> fetchListItems(
+      {required int id}) async {
+    try {
+      final localResult = await baseVideosLocalDataSource.getItemsList();
+      if (localResult.isNotEmpty) {
+        return Right(localResult);
+      }
+      final result = await baseVideosRemoteDataSource.getItemsList(id: id);
       //print(result);
       return Right(result);
     } on ServerException catch (failure) {
