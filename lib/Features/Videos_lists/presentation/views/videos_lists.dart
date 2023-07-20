@@ -33,7 +33,7 @@ class VideosListsScreen extends StatelessWidget {
             Navigator.pop(context);
           }
           if (state is VideoLoadingFetchItemsList) {
-            AppFunctions.loadingPage(context: context);
+            loadingPage(context: context);
           }
         },
         builder: (context, state) {

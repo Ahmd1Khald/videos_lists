@@ -41,17 +41,21 @@ class AppFunctions {
     }
     return index;
   }
-
-  static loadingPage({required context}) => showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) => Center(
-          child: circleLoading(color: Colors.white),
-        ),
-      );
-
-  static circleLoading({required color}) {}
 }
+
+loadingPage({required context}) => showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => Center(
+        child: circleLoading(color: Colors.white),
+      ),
+    );
+
+Widget circleLoading({required Color color}) => Center(
+      child: CircularProgressIndicator(
+        color: color,
+      ),
+    );
 
 Future<void> saveData<T>(
     {required List<T> data, required String boxName}) async {
