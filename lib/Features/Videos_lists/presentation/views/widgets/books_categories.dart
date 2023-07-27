@@ -5,10 +5,17 @@ import '../../../../../Core/utils/assets/assets_images.dart';
 import '../../../../../Core/utils/constance/styles.dart';
 import '../../controller/videos_cubit/video_cubit.dart';
 
-class BooksCategories extends StatelessWidget {
+class BooksCategories extends StatefulWidget {
   const BooksCategories({Key? key, required this.cubit}) : super(key: key);
 
   final VideoCubit cubit;
+
+  @override
+  State<BooksCategories> createState() => _BooksCategoriesState();
+}
+
+class _BooksCategoriesState extends State<BooksCategories> {
+  int _isSelected = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -33,26 +40,32 @@ class BooksCategories extends StatelessWidget {
                       width: 62.w,
                       height: 44.h,
                       decoration: BoxDecoration(
-                          color: const Color(0xff321C75).withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(12.2),
-                          border: Border.all(color: Colors.white, width: 2)),
+                        color: const Color(0xff321C75).withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(12.2),
+                        border: Border.all(color: Colors.white, width: 2),
+                      ),
                     ),
                     Container(
                       width: 60.w,
                       height: 40.h,
                       decoration: BoxDecoration(
                           color: const Color(0xff321C75),
-                          gradient: customGradiant(),
+                          gradient: _isSelected == index
+                              ? customGradiantSelected()
+                              : customGradiantUnSelected(),
                           borderRadius: BorderRadius.circular(12.2),
                           border: Border.all(color: Colors.black, width: 2)),
                       child: TextButton(
                         onPressed: () {
+                          setState(() {
+                            _isSelected = index;
+                          });
                           int id = index + 1;
                           print(id);
-                          cubit.fetchItemsList(id: id);
+                          widget.cubit.fetchItemsList(id: id);
                         },
                         child: Text(
-                          cubit.topicsData?[index].title ?? '',
+                          widget.cubit.topicsData?[index].title ?? '',
                           style: AppStyles.categoriesStyle,
                         ),
                       ),
@@ -62,7 +75,7 @@ class BooksCategories extends StatelessWidget {
                 separatorBuilder: (context, index) => SizedBox(
                   height: 8.h,
                 ),
-                itemCount: cubit.topicsData?.length ?? 0,
+                itemCount: widget.cubit.topicsData?.length ?? 0,
               ),
             ),
           ),
@@ -72,7 +85,7 @@ class BooksCategories extends StatelessWidget {
   }
 }
 
-LinearGradient customGradiant() => LinearGradient(
+LinearGradient customGradiantUnSelected() => LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
       tileMode: TileMode.clamp,
@@ -80,5 +93,16 @@ LinearGradient customGradiant() => LinearGradient(
         const Color(0xff321C75),
         const Color(0xffFFBF4C).withOpacity(0.4),
         const Color(0xff321C75),
+      ],
+    );
+
+LinearGradient customGradiantSelected() => LinearGradient(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+      tileMode: TileMode.clamp,
+      colors: [
+        const Color(0xff8A0AFF),
+        const Color(0xffFFBF4C).withOpacity(0.4),
+        const Color(0xff8A0AFF),
       ],
     );
