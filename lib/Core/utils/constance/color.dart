@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
 class AppColor {
-  static const Color backgroundColor = Colors.deepPurpleAccent;
+  static Color backgroundColor = const Color(0xff321C75);
 }
