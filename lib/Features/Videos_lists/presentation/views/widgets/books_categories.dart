@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../Core/utils/assets/assets_images.dart';
 import '../../../../../Core/utils/constance/styles.dart';
+import '../../../../../Core/utils/widgets/custom_gradiant.dart';
 import '../../controller/videos_cubit/video_cubit.dart';
 
 class BooksCategories extends StatefulWidget {
@@ -24,7 +25,7 @@ class _BooksCategoriesState extends State<BooksCategories> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(AssetsImages.libraryImage,
+          Image.asset(AssetsImages.libraryTextImage,
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height * 0.23),
           Expanded(
@@ -84,25 +85,3 @@ class _BooksCategoriesState extends State<BooksCategories> {
     );
   }
 }
-
-LinearGradient customGradiantUnSelected() => LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-      tileMode: TileMode.clamp,
-      colors: [
-        const Color(0xff321C75),
-        const Color(0xffFFBF4C).withOpacity(0.4),
-        const Color(0xff321C75),
-      ],
-    );
-
-LinearGradient customGradiantSelected() => LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-      tileMode: TileMode.clamp,
-      colors: [
-        const Color(0xff8A0AFF),
-        const Color(0xffFFBF4C).withOpacity(0.4),
-        const Color(0xff8A0AFF),
-      ],
-    );

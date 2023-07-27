@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:videos_lists/Core/utils/constance/color.dart';
+import 'package:videos_lists/Features/Videos_lists/presentation/views/widgets/back_ground_image.dart';
 import 'package:videos_lists/Features/Videos_lists/presentation/views/widgets/books_categories.dart';
 import 'package:videos_lists/Features/Videos_lists/presentation/views/widgets/books_names.dart';
 import 'package:videos_lists/Features/Videos_lists/presentation/views/widgets/custom_gridview.dart';
 
 import '../../../../Core/services/ServiceLocator.dart';
-import '../../../../Core/utils/Assets/assets_images.dart';
 import '../../../../Core/utils/functions/functions.dart';
 import '../../data/repository/videos_repository.dart';
 import '../../domain/usecase/get_list_items_usecase.dart';
@@ -39,21 +38,12 @@ class VideosListsScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          double width = MediaQuery.of(context).size.width;
-          double height = MediaQuery.of(context).size.height;
           return Scaffold(
             backgroundColor: AppColor.backgroundColor,
             body: Stack(
               alignment: Alignment.centerRight,
               children: [
-                SizedBox(
-                  width: width,
-                  height: height * 0.8,
-                  child: SvgPicture.asset(
-                    AssetsImages.backgroundImage,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                const BackGroundImage(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
