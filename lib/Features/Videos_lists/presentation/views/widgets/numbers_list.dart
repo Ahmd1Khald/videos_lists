@@ -6,11 +6,16 @@ import '../../../../../Core/utils/constance/variables.dart';
 import '../../../../../Core/utils/widgets/custom_gradiant.dart';
 import '../../controller/videos_cubit/video_cubit.dart';
 
-class NumberList extends StatelessWidget {
+class NumberList extends StatefulWidget {
   const NumberList({Key? key, required this.cubit}) : super(key: key);
 
   final VideoCubit cubit;
 
+  @override
+  State<NumberList> createState() => _NumberListState();
+}
+
+class _NumberListState extends State<NumberList> {
   @override
   Widget build(BuildContext context) {
     int _isSelected = -1;
@@ -25,38 +30,42 @@ class NumberList extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               Container(
-                width: 19.w,
-                height: 37.h,
+                width: 26.w,
+                height: 52.h,
                 decoration: BoxDecoration(
                   color: const Color(0xff321C75).withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12.2),
+                  borderRadius: BorderRadius.circular(30.2),
                   border: Border.all(color: Colors.white, width: 2),
                 ),
               ),
               Container(
-                  width: 18.w,
-                  height: 35.h,
+                  width: 24.w,
+                  height: 50.h,
                   decoration: BoxDecoration(
                       color: const Color(0xff321C75),
                       gradient: _isSelected == index
                           ? customGradiantSelected()
                           : customGradiantUnSelected(),
-                      borderRadius: BorderRadius.circular(12.2),
+                      borderRadius: BorderRadius.circular(30.2),
                       border: Border.all(color: Colors.black, width: 2)),
-                  child: TextButton(
-                    onPressed: () {
-                      _isSelected = index;
-                      num = index;
-                      cubit.changeNumberSelected(index: index);
-                    },
-                    child: Text(
-                      AppVariable.categoriesCount[index],
-                      style: AppStyles.categoriesStyle,
+                  child: Center(
+                    child: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _isSelected = index;
+                        });
+                        num = index;
+                        widget.cubit.changeNumberSelected(index: index);
+                      },
+                      child: Text(
+                        AppVariable.categoriesCount[index],
+                        style: AppStyles.categoriesStyle,
+                      ),
                     ),
                   )),
             ],
           ),
-          itemCount: cubit.topicsData?[num].itemCount ?? 0,
+          itemCount: widget.cubit.topicsData?[num].itemCount ?? 0,
         ),
       ),
     );
