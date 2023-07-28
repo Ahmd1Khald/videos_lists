@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:videos_lists/Core/utils/constance/color.dart';
 import 'package:videos_lists/Features/Videos_lists/presentation/views/widgets/back_ground_image.dart';
 import 'package:videos_lists/Features/Videos_lists/presentation/views/widgets/books_categories.dart';
@@ -48,20 +47,23 @@ class VideosListsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    BooksName(
-                      cubit: VideoCubit.get(context),
+                    Expanded(
+                      flex: 1,
+                      child: BooksName(
+                        cubit: VideoCubit.get(context),
+                      ),
                     ),
-                    SizedBox(
-                      width: 25.w,
+                    Expanded(
+                      flex: 2,
+                      child: CustomGridView(
+                        cubit: VideoCubit.get(context),
+                      ),
                     ),
-                    CustomGridView(
-                      cubit: VideoCubit.get(context),
-                    ),
-                    SizedBox(
-                      width: 25.w,
-                    ),
-                    BooksCategories(
-                      cubit: VideoCubit.get(context),
+                    Expanded(
+                      flex: 1,
+                      child: BooksCategories(
+                        cubit: VideoCubit.get(context),
+                      ),
                     ),
                   ],
                 )

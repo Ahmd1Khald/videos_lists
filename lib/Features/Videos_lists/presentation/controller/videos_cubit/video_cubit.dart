@@ -32,6 +32,7 @@ class VideoCubit extends Cubit<VideoState> {
 
   void changeNumberSelected({required int index}) {
     numberSelected = index;
+    bookName = 'Book Name';
 
     emit(VideoChangeNumberSelected());
   }
@@ -55,6 +56,7 @@ class VideoCubit extends Cubit<VideoState> {
 
   Future<void> fetchItemsList({required int id}) async {
     emit(VideoLoadingFetchItemsList());
+    bookName = 'Book Name';
     itemsData = [];
     var result = await getListItemsUseCase.execute(id);
     result.fold((failure) {
