@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:videos_lists/Core/utils/Assets/assets_images.dart';
 
@@ -25,7 +24,7 @@ class CustomGridView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 28.h,
+              height: MediaQuery.of(context).size.height * 0.075,
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.3,
