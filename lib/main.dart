@@ -6,7 +6,7 @@ import 'package:videos_lists/Core/helpers/dio_helper.dart';
 import 'package:videos_lists/Core/utils/constance/variables.dart';
 import 'package:videos_lists/Features/Videos_lists/domain/entites/items/items_entity.dart';
 
-import 'Core/BlocObserver.dart';
+import 'Core/services/BlocObserver.dart';
 import 'Core/services/ServiceLocator.dart';
 import 'Features/Videos_lists/domain/entites/topics/topics_entity.dart';
 import 'Features/Videos_lists/domain/entites/topics/topics_entity.g.dart';

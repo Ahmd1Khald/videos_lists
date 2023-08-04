@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../Core/error/failure.dart';
-import '../../../../Core/use_cases.dart';
+import '../../../../Core/services/use_cases.dart';
 import '../entites/topics/topics_entity.dart';
 import '../repository/base_videos_repository.dart';
 

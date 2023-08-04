@@ -16,10 +16,10 @@ class NumberList extends StatefulWidget {
 }
 
 class _NumberListState extends State<NumberList> {
+  int _isSelected = -1;
+  int num = 0;
   @override
   Widget build(BuildContext context) {
-    int _isSelected = -1;
-    int num = 0;
     return Expanded(
       child: SizedBox(
         width: 55.w,
