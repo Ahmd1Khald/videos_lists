@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:videos_lists/Core/helpers/dio_helper.dart';
@@ -22,6 +23,10 @@ void main() async {
   await Hive.openBox<TopicsEntity>(kTopicsBox);
   //await Hive.openBox<ItemsEntity>(kItemsBox);
   setUpServiceLocator();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
   runApp(const MyApp());
 }
 
