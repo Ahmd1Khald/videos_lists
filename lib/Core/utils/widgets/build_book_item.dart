@@ -5,7 +5,7 @@ import 'package:videos_lists/Core/utils/Assets/assets_images.dart';
 import '../../../Features/Videos_lists/presentation/controller/videos_cubit/video_cubit.dart';
 
 Widget buildGridBooks(String name, VideoCubit cubit, int index) => Padding(
-      padding: const EdgeInsets.only(top: 8.0, bottom: 5),
+      padding: const EdgeInsets.only(top: 5, bottom: 3),
       child: InkWell(
         child: SizedBox(
           height: 18.h,

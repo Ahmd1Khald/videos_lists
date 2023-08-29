@@ -17,14 +17,14 @@ class CustomGridView extends StatelessWidget {
       children: [
         SvgPicture.asset(
           AssetsImages.libraryImage,
-          height: MediaQuery.of(context).size.height * 0.7,
+          height: MediaQuery.of(context).size.height * 0.6,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.075,
+              height: MediaQuery.of(context).size.height * 0.15,
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.3,
@@ -34,6 +34,7 @@ class CustomGridView extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
+                crossAxisSpacing: 2,
                 children: List.generate(
                   cubit.itemsData?.length ?? 0,
                   (index) => buildGridBooks(
